@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar";
+import "../styles/global.css";
 
 function Layout({ children }) {
   return (
