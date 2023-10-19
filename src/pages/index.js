@@ -3,7 +3,9 @@ import Layout from "../components/Layout";
 import * as styles from "../styles/home.module.css";
 import { Link } from "gatsby";
 
-export default function Home() {
+export default function Home({ data }) {
+  const { title, description } = data.site.siteMetadata;
+  console.log("DATA", title, description);
   return (
     <Layout>
       <section className={styles.header}>
@@ -32,6 +34,7 @@ export default function Home() {
             My projects
           </Link>
         </div>
+        <img src="/work.png" alt="home" />
       </section>
     </Layout>
   );

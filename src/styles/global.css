@@ -26,12 +26,13 @@ p {
 .layout {
   max-width: 1200px;
   margin: 0 auto;
+  min-height: 100%;
 }
 
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 40px auto;
+  margin: 40px 20px;
 }
 
 nav .links {
@@ -57,4 +58,8 @@ footer {
   text-align: center;
   margin: 40px auto;
   color: gray;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
