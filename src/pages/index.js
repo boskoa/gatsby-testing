@@ -1,11 +1,11 @@
 import * as React from "react";
 import Layout from "../components/Layout";
 import * as styles from "../styles/home.module.css";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
+import GatsbyImage from "gatsby-image";
 
 export default function Home({ data }) {
-  const { title, description } = data.site.siteMetadata;
-  console.log("DATA", title, description);
+  console.log("DATA", data);
   return (
     <Layout>
       <section className={styles.header}>
@@ -34,8 +34,20 @@ export default function Home({ data }) {
             My projects
           </Link>
         </div>
-        <img src="/work.png" alt="home" />
+        <GatsbyImage fluid={data.file.childImageSharp.fluid} />
       </section>
     </Layout>
   );
 }
+
+export const query = graphql`
+  query image {
+    file(relativePath: { eq: "work.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;

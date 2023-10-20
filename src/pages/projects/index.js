@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import * as styles from "../../styles/projects.module.css";
 import { Link, graphql } from "gatsby";
+import GatsbyImage from "gatsby-image";
 
 function Projects({ data }) {
   const projects = data.projects.nodes;
@@ -15,6 +16,7 @@ function Projects({ data }) {
         <div className={styles.projects}>
           {projects.map((p) => (
             <Link to={`/projects/${p.frontmatter.slug}`} key={p.id}>
+              <GatsbyImage fluid={p.frontmatter.thumb.childImageSharp.fluid} />
               <div>
                 <h3>{p.frontmatter.title}</h3>
                 <p>{p.frontmatter.stack}</p>
@@ -37,6 +39,13 @@ export const query = graphql`
           slug
           stack
           title
+          thumb {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         id
       }
